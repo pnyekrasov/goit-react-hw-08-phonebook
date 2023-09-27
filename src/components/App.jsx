@@ -1,7 +1,7 @@
 import Home from 'pages/Home/Home';
-import Login from 'pages/Login/Login';
-import Phonebook from 'pages/Phonebook/Phonebook';
-import Register from 'pages/Register/Register';
+import Login from 'pages/Login';
+import Phonebook from 'pages/Phonebook';
+import Register from 'pages/Register';
 import { NavLink, Route, Routes } from 'react-router-dom';
 
 export const App = () => {

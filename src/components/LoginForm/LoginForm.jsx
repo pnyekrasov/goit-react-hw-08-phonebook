@@ -1,22 +1,30 @@
-import { Formik, Field, Form } from 'formik';
-import { useState } from 'react';
+import { Formik } from 'formik';
+
 import { VscEyeClosed, VscEye } from 'react-icons/vsc';
-import { Ikon, PasswordForm } from './LoginForm.styled';
+import {
+  Button,
+  Ikon,
+  Label,
+  LabelForm,
+  StyledError,
+  StyledField,
+  StyledForm,
+} from './LoginForm.styled';
 import * as Yup from 'yup';
+import { useState } from 'react';
 
 const schema = Yup.object().shape({
   email: Yup.string()
-    .required('Name is required')
+    .email('The value entered is not a mail')
+    .required('Email is required')
     .matches(
-      /^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/,
-      "Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+      /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i,
+      'Fill out the field correctly, please'
     ),
   password: Yup.string()
-    .required('Phone number is required')
-    .matches(
-      /\+?\d{1,4}?[ .\-\s]?\(?\d{1,3}?\)?[ .\-\\s]?\d{1,4}[ .\-\s]?\d{1,4}[ .\-\s]?\d{1,9}/,
-      'Phone number must be digits and can contain spaces, dashes, parentheses and can start with +'
-    ),
+    .required('Password is required')
+    .min(6, 'Password must be 6 characters long')
+    .matches(/[a-zA-Z]/, 'Password can only contain Latin letters.'),
 });
 
 export const LoginForm = () => {
@@ -26,31 +34,34 @@ export const LoginForm = () => {
   };
 
   return (
-    <div>
-      <Formik
-        initialValues={{
-          email: '',
-          password: '',
-        }}
-        onSubmit={values => {}}
-      >
-        <Form>
-          <label>
-            Email
-            <Field name="email" type="email" placeholder="jane@acme.com" />
-          </label>
+    <Formik
+      initialValues={{
+        email: '',
+        password: '',
+      }}
+      validationSchema={schema}
+      onSubmit={values => {
+        console.log(values);
+      }}
+    >
+      <StyledForm>
+        <Label>
+          Email
+          <StyledField name="email" type="email" placeholder="jane@acme.com" />
+          <StyledError name="email" component="div" />
+        </Label>
 
-          <PasswordForm>
-            Password
-            <Field name="password" type={visible ? 'text' : 'password'} />
-            <Ikon onClick={handleShow}>
-              {visible ? <VscEyeClosed /> : <VscEye />}
-            </Ikon>
-          </PasswordForm>
+        <LabelForm>
+          Password
+          <StyledField name="password" type={visible ? 'text' : 'password'} />
+          <Ikon onClick={handleShow}>
+            {visible ? <VscEyeClosed /> : <VscEye />}
+          </Ikon>
+          <StyledError name="password" component="div" />
+        </LabelForm>
 
-          <button type="submit">Log in</button>
-        </Form>
-      </Formik>
-    </div>
+        <Button type="submit">Log in</Button>
+      </StyledForm>
+    </Formik>
   );
 };
