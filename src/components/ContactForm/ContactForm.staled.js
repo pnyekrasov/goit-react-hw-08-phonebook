@@ -5,9 +5,7 @@ export const StyledForm = styled(Form)`
   display: flex;
   flex-direction: column;
   gap: 16px;
-  padding: 12px;
   width: 400px;
-  border: 1px solid #000;
 `;
 
 export const Label = styled.label`
@@ -20,6 +18,7 @@ export const Label = styled.label`
 export const StyledField = styled(Field)`
   padding: 4px;
   width: 180px;
+  border: 1px solid #e8ebef;
   box-shadow: inset 2px 2px rgba(0, 0, 0, 0.2);
 `;
 

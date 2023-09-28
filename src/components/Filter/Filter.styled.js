@@ -11,5 +11,6 @@ export const InputFilter = styled.input`
   margin-bottom: 20px;
   padding: 4px;
   width: 180px;
+  border: 1px solid #e8ebef;
   box-shadow: inset 2px 2px rgba(0, 0, 0, 0.2);
 `;

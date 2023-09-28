@@ -1,9 +1,10 @@
 import { IconContext } from 'react-icons';
 import { FcMultipleSmartphones } from 'react-icons/fc';
+import { HomeList } from './Home.styled';
 
 export default function Home() {
   return (
-    <div>
+    <HomeList>
       <div>
         <h1>Phonebook manager welcome page&nbsp;</h1>
         <IconContext.Provider
@@ -16,6 +17,6 @@ export default function Home() {
         To get started, go to the Log In or Register page (if you are not
         registered), please!
       </h2>
-    </div>
+    </HomeList>
   );
 }
