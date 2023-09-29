@@ -1,22 +1,16 @@
-import { List, StyledLink } from './MainNav.styled';
+import { useAuth } from 'hooks';
+import { Wrap } from './MainNav.styled';
+import { Navigation } from 'components/Navigation/Navigation';
+import { UserMenu } from 'components/UserMenu/UserMenu';
+import { AuthNav } from 'components/AuthMenu';
 
-export const MainNav = () => {
+export const AppBar = () => {
+  const { isLoggedIn } = useAuth();
+
   return (
-    <nav>
-      <List>
-        <li>
-          <StyledLink to="/">Home</StyledLink>
-        </li>
-        <li>
-          <StyledLink to="/contacts">Phonebook</StyledLink>
-        </li>
-        <li>
-          <StyledLink to="/register">Register</StyledLink>
-        </li>
-        <li>
-          <StyledLink to="/login">Login</StyledLink>
-        </li>
-      </List>
-    </nav>
+    <Wrap>
+      <Navigation />
+      {isLoggedIn ? <UserMenu /> : <AuthNav />}
+    </Wrap>
   );
 };
