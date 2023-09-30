@@ -39,6 +39,15 @@ export const RegisterForm = () => {
     setvisible(!visible);
   };
 
+  const handleRegisterSubmit = e => {
+    e.preventDefault();
+    const newUser = {
+      username: e.target.elemenet.usename.value,
+      email: e.target.elemenet.email.value,
+      password: e.target.elemenet.password.value,
+    };
+  };
+
   return (
     <Formik
       initialValues={{
@@ -47,9 +56,7 @@ export const RegisterForm = () => {
         password: '',
       }}
       validationSchema={schema}
-      onSubmit={values => {
-        console.log(values);
-      }}
+      onSubmit={handleRegisterSubmit}
     >
       <StyledForm>
         <Label>
