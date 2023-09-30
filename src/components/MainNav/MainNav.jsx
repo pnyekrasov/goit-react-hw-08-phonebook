@@ -3,15 +3,16 @@ import { Wrap } from './MainNav.styled';
 import { Navigation } from 'components/Navigation/Navigation';
 import { UserMenu } from 'components/UserMenu/UserMenu';
 import { AuthNav } from 'components/AuthMenu';
+import { useAuth } from 'hooks/userAuth';
 
 export const MainNav = () => {
-  // const { isLoggedIn } = useAuth();
+  const { isLoggedIn } = useAuth();
 
   return (
     <Wrap>
       <Navigation />
       <UserMenu />
-      <AuthNav />}{/* {isLoggedIn ? <UserMenu /> : <AuthNav />} */}
+      {isLoggedIn ? <UserMenu /> : <AuthNav />}
     </Wrap>
   );
 };

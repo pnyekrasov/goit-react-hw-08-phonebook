@@ -12,6 +12,8 @@ import {
 } from './RegisterForm.styled';
 import * as Yup from 'yup';
 import { useState } from 'react';
+import { register } from 'redux/Auth/operations';
+import { useDispatch } from 'react-redux';
 
 const schema = Yup.object().shape({
   username: Yup.string()
@@ -38,14 +40,11 @@ export const RegisterForm = () => {
   const handleShow = () => {
     setvisible(!visible);
   };
+  const dispatch = useDispatch();
 
-  const handleRegisterSubmit = e => {
-    e.preventDefault();
-    const newUser = {
-      username: e.target.elemenet.usename.value,
-      email: e.target.elemenet.email.value,
-      password: e.target.elemenet.password.value,
-    };
+  const handleRegisterSubmit = (values, actions) => {
+    dispatch(register(values));
+    actions.resetForm();
   };
 
   return (
