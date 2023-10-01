@@ -1,6 +1,6 @@
 import { StyledLink } from 'components/Navigation/Navigation.styled';
 
-export const AuthNav = () => {
+export const AuthMenu = () => {
   return (
     <div>
       <StyledLink to="/register">Register</StyledLink>

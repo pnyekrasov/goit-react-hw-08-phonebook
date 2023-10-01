@@ -1,14 +1,14 @@
 import { useEffect } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { selectIsLoading, selectError } from 'redux/selectors';
+import { selectError, selectIsLoading } from 'redux/Phonebook/selectors';
+import { fetchContacts } from 'redux/Phonebook/operations';
 
 import { ContactForm } from 'components/ContactForm/ContactForm';
 import { ContactsBook } from './PhonebookList.staled';
 import { Filter } from 'components/Filter/Filter';
 import { ContactList } from 'components/ContactList/ContactList';
 import { Loader } from 'components/Loader/Loader';
-import { fetchContacts } from 'redux/operations';
 
 export const PhonebookList = () => {
   const dispatch = useDispatch();
