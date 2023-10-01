@@ -16,7 +16,7 @@ import { register } from 'redux/Auth/operations';
 import { useDispatch } from 'react-redux';
 
 const schema = Yup.object().shape({
-  username: Yup.string()
+  name: Yup.string()
     .required('Name is required')
     .matches(
       /^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/,
@@ -50,7 +50,7 @@ export const RegisterForm = () => {
   return (
     <Formik
       initialValues={{
-        username: '',
+        name: '',
         email: '',
         password: '',
       }}
@@ -59,9 +59,9 @@ export const RegisterForm = () => {
     >
       <StyledForm>
         <Label>
-          Username
-          <StyledField name="username" />
-          <StyledError name="username" component="div" />
+          Name
+          <StyledField name="name" />
+          <StyledError name="name" component="div" />
         </Label>
         <Label>
           Email
