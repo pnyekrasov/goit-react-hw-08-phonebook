@@ -18,10 +18,7 @@ import { useDispatch } from 'react-redux';
 const schema = Yup.object().shape({
   name: Yup.string()
     .required('Name is required')
-    .matches(
-      /^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/,
-      "Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-    ),
+    .min(4, 'Name must be 4 characters long'),
   email: Yup.string()
     .email('The value entered is not a mail')
     .required('Email is required')
