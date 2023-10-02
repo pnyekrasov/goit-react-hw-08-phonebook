@@ -1,15 +1,6 @@
-// import { configureStore } from '@reduxjs/toolkit';
 import { contactsReducer } from './Phonebook/contactsSlice';
 import { filterReducer } from './Phonebook/filterSlice';
 import { authReducer } from './Auth/authSlice';
-
-// export const store = configureStore({
-//   reducer: {
-//     contacts: contactsReducer,
-//     filter: filterReducer,
-//     auth: authReducer,
-//   },
-// });
 
 import { configureStore } from '@reduxjs/toolkit';
 import {
@@ -24,9 +15,6 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
-// import { tasksReducer } from './tasks/slice';
-// import { authReducer } from './auth/slice';
-
 const authPersistConfig = {
   key: 'auth',
   storage,
@@ -38,8 +26,8 @@ export const store = configureStore({
     contacts: contactsReducer,
     filter: filterReducer,
     auth: persistReducer(authPersistConfig, authReducer),
-    // tasks: tasksReducer,
   },
+
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
       serializableCheck: {
