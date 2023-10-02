@@ -38,6 +38,7 @@ img {
 
 button {
   display: block;
+  width: 90px;
   padding: 4px 8px;
   font-family: inherit;
   font-weight: 500;

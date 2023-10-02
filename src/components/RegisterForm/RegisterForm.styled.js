@@ -40,10 +40,6 @@ export const Ikon = styled.div`
   cursor: pointer;
 `;
 
-export const Button = styled.button`
-  width: 100px;
-`;
-
 export const StyledError = styled(ErrorMessage)`
   color: red;
 `;

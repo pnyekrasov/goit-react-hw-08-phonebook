@@ -2,7 +2,6 @@ import { Formik } from 'formik';
 
 import { VscEyeClosed, VscEye } from 'react-icons/vsc';
 import {
-  Button,
   Ikon,
   Label,
   LabelForm,
@@ -75,7 +74,7 @@ export const RegisterForm = () => {
           <StyledError name="password" component="div" />
         </LabelForm>
 
-        <Button type="submit">Register</Button>
+        <button type="submit">Register</button>
       </StyledForm>
     </Formik>
   );

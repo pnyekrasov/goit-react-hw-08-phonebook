@@ -3,13 +3,7 @@ import { addContact } from 'redux/Phonebook/operations';
 import { selectContacts } from 'redux/Phonebook/selectors';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
-import {
-  Label,
-  StyledForm,
-  StyledField,
-  Button,
-  StyledError,
-} from './ContactForm.staled';
+import { Label, StyledForm, StyledField, StyledError } from './Form.staled';
 
 const schema = Yup.object().shape({
   name: Yup.string()
@@ -59,7 +53,7 @@ export const ContactForm = () => {
           <StyledError name="number" component="div" />
         </Label>
 
-        <Button type="submit">Add contact</Button>
+        <button type="submit">Add contact</button>
       </StyledForm>
     </Formik>
   );

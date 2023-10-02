@@ -22,10 +22,6 @@ export const StyledField = styled(Field)`
   box-shadow: inset 2px 2px rgba(0, 0, 0, 0.2);
 `;
 
-export const Button = styled.button`
-  width: 100px;
-`;
-
 export const StyledError = styled(ErrorMessage)`
   color: red;
 `;

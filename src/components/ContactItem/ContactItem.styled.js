@@ -6,6 +6,8 @@ export const ContactCard = styled.p`
   font-size: 20px;
 `;
 
-export const ButtonDelete = styled.button`
-  margin-left: 12px;
+export const Span = styled.span`
+  margin-right: 12px;
 `;
+
+

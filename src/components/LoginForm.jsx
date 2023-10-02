@@ -2,14 +2,13 @@ import { Formik } from 'formik';
 
 import { VscEyeClosed, VscEye } from 'react-icons/vsc';
 import {
-  Button,
   Ikon,
   Label,
   LabelForm,
   StyledError,
   StyledField,
   StyledForm,
-} from './LoginForm.styled';
+} from '../components/LoginForm/LoginForm.styled';
 import * as Yup from 'yup';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
@@ -66,7 +65,7 @@ export const LoginForm = () => {
           <StyledError name="password" component="div" />
         </LabelForm>
 
-        <Button type="submit">Log in</Button>
+        <button type="submit">Log in</button>
       </StyledForm>
     </Formik>
   );
