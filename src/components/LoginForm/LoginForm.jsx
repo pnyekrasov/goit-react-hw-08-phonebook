@@ -12,6 +12,8 @@ import {
 } from './LoginForm.styled';
 import * as Yup from 'yup';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { logIn } from 'redux/Auth/operations';
 
 const schema = Yup.object().shape({
   email: Yup.string()
@@ -33,6 +35,12 @@ export const LoginForm = () => {
     setvisible(!visible);
   };
 
+  const dispatch = useDispatch();
+  const handleSubmit = (values, actions) => {
+    dispatch(logIn(values));
+    actions.resetForm();
+  };
+
   return (
     <Formik
       initialValues={{
@@ -40,9 +48,7 @@ export const LoginForm = () => {
         password: '',
       }}
       validationSchema={schema}
-      onSubmit={values => {
-        console.log(values);
-      }}
+      onSubmit={handleSubmit}
     >
       <StyledForm>
         <Label>

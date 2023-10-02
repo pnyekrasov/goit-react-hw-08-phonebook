@@ -37,9 +37,9 @@ export const RegisterForm = () => {
   const handleShow = () => {
     setvisible(!visible);
   };
-  const dispatch = useDispatch();
 
-  const handleRegisterSubmit = (values, actions) => {
+  const dispatch = useDispatch();
+  const handleSubmit = (values, actions) => {
     dispatch(register(values));
     actions.resetForm();
   };
@@ -52,7 +52,7 @@ export const RegisterForm = () => {
         password: '',
       }}
       validationSchema={schema}
-      onSubmit={handleRegisterSubmit}
+      onSubmit={handleSubmit}
     >
       <StyledForm>
         <Label>
