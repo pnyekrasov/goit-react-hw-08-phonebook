@@ -34,7 +34,8 @@ export const LabelForm = styled.label`
 
 export const Ikon = styled.div`
   position: absolute;
-  top: 32px;
+  top: 50%;
+  transform: translateY(15%);
   left: 165px;
   z-index: 100;
   cursor: pointer;
