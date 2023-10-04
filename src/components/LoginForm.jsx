@@ -1,18 +1,11 @@
 import { Formik } from 'formik';
 
-import { VscEyeClosed, VscEye } from 'react-icons/vsc';
-import {
-  Ikon,
-  Label,
-  LabelForm,
-  StyledError,
-  StyledField,
-  StyledForm,
-} from '../components/LoginForm/LoginForm.styled';
 import * as Yup from 'yup';
-import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { logIn } from 'redux/Auth/operations';
+import { useIconToggle } from 'hooks/useIconToggle';
+import { Iсon, LabelForm, StyledForm } from './FormAuth.styled';
+import { Label, StyledError, StyledField } from './Form.staled';
 
 const schema = Yup.object().shape({
   email: Yup.string()
@@ -29,10 +22,7 @@ const schema = Yup.object().shape({
 });
 
 export const LoginForm = () => {
-  const [visible, setvisible] = useState(false);
-  const handleShow = () => {
-    setvisible(!visible);
-  };
+  const [PasswordInputType, ToggleIkon, handleShow] = useIconToggle();
 
   const dispatch = useDispatch();
   const handleSubmit = (values, actions) => {
@@ -58,10 +48,8 @@ export const LoginForm = () => {
 
         <LabelForm>
           Password
-          <StyledField name="password" type={visible ? 'text' : 'password'} />
-          <Ikon onClick={handleShow}>
-            {visible ? <VscEyeClosed /> : <VscEye />}
-          </Ikon>
+          <StyledField name="password" type={PasswordInputType} />
+          <Iсon onClick={handleShow}>{ToggleIkon}</Iсon>
           <StyledError name="password" component="div" />
         </LabelForm>
 
