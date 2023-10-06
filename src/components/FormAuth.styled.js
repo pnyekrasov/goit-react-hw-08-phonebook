@@ -20,8 +20,7 @@ export const LabelForm = styled.label`
 
 export const Iсon = styled.div`
   position: absolute;
-  top: 50%;
-  transform: translateY(15%);
+  top: 32px;
   left: 165px;
   z-index: 100;
   cursor: pointer;
