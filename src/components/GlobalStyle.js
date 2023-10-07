@@ -52,7 +52,7 @@ button {
 
 button:hover {
   color: #fff;
-  background-color: #2d66c3;
+  background-color: #2d66c3; 
 }
 
 `;
