@@ -55,6 +55,4 @@ button:hover {
   background-color: #2d66c3;
 }
 
-
-
 `;
