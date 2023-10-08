@@ -38,7 +38,12 @@ export const ContactItem = ({ id, name, number }) => {
         isOpen={modalEditOpen}
         isClose={() => setModalEditOpen(false)}
       >
-        <ContactFormEdit id={id} />
+        <ContactFormEdit
+          isClose={() => setModalEditOpen(false)}
+          id={id}
+          name={name}
+          number={number}
+        />
       </ModalWindow>
     </ContactCard>
   );

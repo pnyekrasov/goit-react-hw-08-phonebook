@@ -16,19 +16,20 @@ const schema = Yup.object().shape({
   ),
 });
 
-export const ContactFormEdit = ({ id }) => {
+export const ContactFormEdit = ({ id, name, number, isClose }) => {
   const dispatch = useDispatch();
+  console.log(id);
 
   return (
     <Formik
       initialValues={{
-        name: '',
-        number: '',
+        name,
+        number,
       }}
       validationSchema={schema}
       onSubmit={(values, actions) => {
-        dispatch(editContact(values, id));
-        console.log(values.name);
+        dispatch(editContact({ ...values, id }));
+        isClose();
         actions.resetForm();
       }}
     >

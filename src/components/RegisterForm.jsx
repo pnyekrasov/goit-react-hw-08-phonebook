@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux';
 import { useIconToggle } from 'hooks/useIconToggle';
 import { Iсon, LabelForm, StyledForm } from './FormAuth.styled';
 import { Label, StyledError, StyledField } from './Form.staled';
+import { useState } from 'react';
 
 const schema = Yup.object().shape({
   name: Yup.string()
@@ -25,8 +26,8 @@ const schema = Yup.object().shape({
 });
 
 export const RegisterForm = () => {
-  const [PasswordInputType, ToggleIkon, handleShow] = useIconToggle();
-
+  const [visible, inputType, ToggleIсon, onShow] = useIconToggle();
+  const [visibleIcon, setVisibleIcon] = useState(false);
   const dispatch = useDispatch();
   const handleSubmit = (values, actions) => {
     dispatch(register(values));
@@ -57,11 +58,15 @@ export const RegisterForm = () => {
 
         <LabelForm>
           Password
-          <StyledField name="password" type={PasswordInputType} />
-          <Iсon onClick={handleShow}>{ToggleIkon}</Iсon>
+          <StyledField
+            name="password"
+            type={inputType}
+            onFocus={() => setVisibleIcon(ps => !ps)}
+            // onBlur={() => setVisibleIcon(ps => !ps)}
+          />
+          {visibleIcon && <Iсon onClick={onShow}>{ToggleIсon}</Iсon>}
           <StyledError name="password" component="div" />
         </LabelForm>
-
         <button type="submit">Register</button>
       </StyledForm>
     </Formik>
