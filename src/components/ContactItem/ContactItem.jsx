@@ -1,17 +1,23 @@
-import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
-
-import { deleteContact } from 'redux/Phonebook/operations';
-import { ModalWindow } from 'components/Modal/Modal';
-import { ContactFormEdit } from 'components/ContactFormEdit';
-
+import { deleteContact, editContact } from 'redux/Phonebook/operations';
 import { ContactCard, Span } from './ContactItem.styled';
+import { ModalWindow } from 'components/Modal/Modal';
+import { useState } from 'react';
+import { ContactForm } from 'components/ContactForm';
 
 export const ContactItem = ({ id, name, number }) => {
   const [modalDelOpen, setModalDelOpen] = useState(false);
   const [modalEditOpen, setModalEditOpen] = useState(false);
   const dispatch = useDispatch();
+
+  const isClose = () => setModalEditOpen(false);
+
+  const handleSubmit = (values, actions) => {
+    dispatch(editContact({ ...values, id }));
+    isClose();
+    actions.resetForm();
+  };
 
   return (
     <ContactCard>
@@ -40,11 +46,13 @@ export const ContactItem = ({ id, name, number }) => {
         isOpen={modalEditOpen}
         isClose={() => setModalEditOpen(false)}
       >
-        <ContactFormEdit
-          isClose={() => setModalEditOpen(false)}
-          id={id}
+        <h2>Are you sure you want to make changes to this contact?</h2>
+        <ContactForm
+          handleSubmit={handleSubmit}
+          Button="Edit"
           name={name}
           number={number}
+          Color="#ec7733"
         />
       </ModalWindow>
     </ContactCard>

@@ -1,7 +1,3 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { addContact } from 'redux/Phonebook/operations';
-import { selectContacts } from 'redux/Phonebook/selectors';
-
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { Label, StyledForm, StyledField, StyledError } from './Form.staled';
@@ -21,25 +17,21 @@ const schema = Yup.object().shape({
     ),
 });
 
-export const ContactForm = () => {
-  const contacts = useSelector(selectContacts);
-  const dispatch = useDispatch();
-
+export const ContactForm = ({
+  handleSubmit,
+  name = '',
+  number = '',
+  Button,
+  Color = '#fdfdfe',
+}) => {
   return (
     <Formik
       initialValues={{
-        name: '',
-        number: '',
+        name: name,
+        number: number,
       }}
       validationSchema={schema}
-      onSubmit={(values, actions) => {
-        contacts.find(
-          contact => contact.name.toLowerCase() === values.name.toLowerCase()
-        )
-          ? alert(`${values.name} is already in contacts`)
-          : dispatch(addContact(values));
-        actions.resetForm();
-      }}
+      onSubmit={handleSubmit}
     >
       <StyledForm>
         <Label>
@@ -54,7 +46,9 @@ export const ContactForm = () => {
           <StyledError name="number" component="div" />
         </Label>
 
-        <button type="submit">Add contact</button>
+        <button type="submit" style={{ backgroundColor: Color }}>
+          {Button}
+        </button>
       </StyledForm>
     </Formik>
   );
