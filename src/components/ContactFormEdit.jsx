@@ -18,7 +18,6 @@ const schema = Yup.object().shape({
 
 export const ContactFormEdit = ({ id, name, number, isClose }) => {
   const dispatch = useDispatch();
-  console.log(id);
 
   return (
     <Formik

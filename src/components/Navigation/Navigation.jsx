@@ -1,4 +1,5 @@
 import { useAuth } from 'hooks/userAuth';
+
 import { StyledLink } from './Navigation.styled';
 
 export const Navigation = () => {

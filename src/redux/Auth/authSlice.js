@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+
 import { logIn, logOut, refreshUser, register } from './operations';
 
 const handlePending = state => {

@@ -1,9 +1,11 @@
 import { useSelector } from 'react-redux';
+
 import {
   selectNumberContacts,
   selectVisibleContacts,
 } from 'redux/Phonebook/selectors';
 import { ContactItem } from 'components/ContactItem/ContactItem';
+
 import { List, ListItem } from './ContactList.styled';
 
 export const ContactList = () => {

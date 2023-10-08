@@ -1,9 +1,10 @@
-import { Formik } from 'formik';
-
-import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
+import { Formik } from 'formik';
+import * as Yup from 'yup';
+
 import { logIn } from 'redux/Auth/operations';
 import { useIconToggle } from 'hooks/useIconToggle';
+
 import { Iсon, LabelForm, StyledForm } from './FormAuth.styled';
 import { Label, StyledError, StyledField } from './Form.staled';
 

@@ -1,12 +1,13 @@
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
-import { register } from 'redux/Auth/operations';
-import { useDispatch } from 'react-redux';
 
+import { register } from 'redux/Auth/operations';
 import { useIconToggle } from 'hooks/useIconToggle';
+
 import { Iсon, LabelForm, StyledForm } from './FormAuth.styled';
 import { Label, StyledError, StyledField } from './Form.staled';
-import { useState } from 'react';
 
 const schema = Yup.object().shape({
   name: Yup.string()

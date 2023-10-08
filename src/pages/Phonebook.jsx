@@ -1,5 +1,6 @@
-import { PhonebookList } from 'components/PhonebookList/PhonebookList';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
+
+import { PhonebookList } from 'components/PhonebookList/PhonebookList';
 
 const helmetContext = {};
 

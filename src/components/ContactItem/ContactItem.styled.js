@@ -7,7 +7,5 @@ export const ContactCard = styled.p`
 `;
 
 export const Span = styled.span`
-  margin-right: 12px;
+  margin-right: 48px;
 `;
-
-

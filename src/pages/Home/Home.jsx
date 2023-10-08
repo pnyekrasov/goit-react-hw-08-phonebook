@@ -1,5 +1,6 @@
 import { IconContext } from 'react-icons';
 import { FcMultipleSmartphones } from 'react-icons/fc';
+
 import { HomeList, StyledDiv } from './Home.styled';
 
 export default function Home() {

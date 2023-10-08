@@ -1,5 +1,7 @@
 import { useDispatch } from 'react-redux';
+
 import { getVisibleContacts } from 'redux/Phonebook/filterSlice';
+
 import { InputFilter, Label } from './Filter.styled';
 
 export const Filter = () => {

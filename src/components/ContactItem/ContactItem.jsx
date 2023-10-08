@@ -1,10 +1,12 @@
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
+
 import { deleteContact } from 'redux/Phonebook/operations';
-import { ContactCard, Span } from './ContactItem.styled';
 import { ModalWindow } from 'components/Modal/Modal';
-import { useState } from 'react';
 import { ContactFormEdit } from 'components/ContactFormEdit';
+
+import { ContactCard, Span } from './ContactItem.styled';
 
 export const ContactItem = ({ id, name, number }) => {
   const [modalDelOpen, setModalDelOpen] = useState(false);
