@@ -1,14 +1,18 @@
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 
-import { logIn } from 'redux/Auth/operations';
+import { register } from 'redux/Auth/operations';
 import { useIconToggle } from 'hooks/useIconToggle';
 
 import { Iсon, LabelForm, StyledForm } from './FormAuth.styled';
 import { Label, StyledError, StyledField } from './Form.staled';
 
 const schema = Yup.object().shape({
+  name: Yup.string()
+    .required('Name is required')
+    .min(4, 'Name must be 4 characters long'),
   email: Yup.string()
     .email('The value entered is not a mail')
     .required('Email is required')
@@ -22,18 +26,19 @@ const schema = Yup.object().shape({
     .matches(/[a-zA-Z]/, 'Password can only contain Latin letters.'),
 });
 
-export const LoginForm = () => {
-  const [PasswordInputType, ToggleIkon, handleShow] = useIconToggle();
-
+export const RegisterForm = () => {
+  const [visible, inputType, ToggleIсon, onShow] = useIconToggle();
+  const [, setVisibleIcon] = useState(false);
   const dispatch = useDispatch();
   const handleSubmit = (values, actions) => {
-    dispatch(logIn(values));
+    dispatch(register(values));
     actions.resetForm();
   };
 
   return (
     <Formik
       initialValues={{
+        name: '',
         email: '',
         password: '',
       }}
@@ -42,6 +47,11 @@ export const LoginForm = () => {
     >
       <StyledForm>
         <Label>
+          Name
+          <StyledField name="name" />
+          <StyledError name="name" component="div" />
+        </Label>
+        <Label>
           Email
           <StyledField name="email" type="email" placeholder="jane@acme.com" />
           <StyledError name="email" component="div" />
@@ -49,12 +59,16 @@ export const LoginForm = () => {
 
         <LabelForm>
           Password
-          <StyledField name="password" type={PasswordInputType} />
-          <Iсon onClick={handleShow}>{ToggleIkon}</Iсon>
+          <StyledField
+            name="password"
+            type={inputType}
+            onFocus={() => setVisibleIcon(ps => !ps)}
+            onBlur={() => setVisibleIcon(ps => !ps)}
+          />
+          {visible && <Iсon onClick={onShow}>{ToggleIсon}</Iсon>}
           <StyledError name="password" component="div" />
         </LabelForm>
-
-        <button type="submit">Log in</button>
+        <button type="submit">Register</button>
       </StyledForm>
     </Formik>
   );

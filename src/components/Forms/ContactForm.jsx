@@ -1,5 +1,6 @@
 import { Formik } from 'formik';
 import * as Yup from 'yup';
+
 import { Label, StyledForm, StyledField, StyledError } from './Form.staled';
 
 const schema = Yup.object().shape({
@@ -22,7 +23,8 @@ export const ContactForm = ({
   name = '',
   number = '',
   Button,
-  Color = '#fdfdfe',
+  Color,
+  Padding,
 }) => {
   return (
     <Formik
@@ -33,7 +35,7 @@ export const ContactForm = ({
       validationSchema={schema}
       onSubmit={handleSubmit}
     >
-      <StyledForm>
+      <StyledForm style={{ paddingLeft: Padding }}>
         <Label>
           Name
           <StyledField name="name" />

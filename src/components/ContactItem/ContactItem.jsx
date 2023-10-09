@@ -1,10 +1,12 @@
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
+
 import { deleteContact, editContact } from 'redux/Phonebook/operations';
-import { ContactCard, Span } from './ContactItem.styled';
 import { ModalWindow } from 'components/Modal/Modal';
-import { useState } from 'react';
-import { ContactForm } from 'components/ContactForm';
+import { ContactForm } from 'components/Forms/ContactForm';
+
+import { ContactCard, Span } from './ContactItem.styled';
 
 export const ContactItem = ({ id, name, number }) => {
   const [modalDelOpen, setModalDelOpen] = useState(false);
@@ -53,6 +55,7 @@ export const ContactItem = ({ id, name, number }) => {
           name={name}
           number={number}
           Color="#ec7733"
+          Padding="50px"
         />
       </ModalWindow>
     </ContactCard>

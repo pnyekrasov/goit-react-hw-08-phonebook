@@ -1,8 +1,8 @@
 import { lazy, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { Navigate, Route, Routes } from 'react-router-dom';
 
 import { SharedLayout } from './SharedLayout/SharedLayout';
-import { useDispatch } from 'react-redux';
 import { refreshUser } from 'redux/Auth/operations';
 import { useAuth } from 'hooks/userAuth';
 import { Loader } from './Loader/Loader';
@@ -17,6 +17,7 @@ const Phonebook = lazy(() => import('../pages/Phonebook'));
 export const App = () => {
   const dispatch = useDispatch();
   const { isRefreshing } = useAuth();
+
   useEffect(() => {
     dispatch(refreshUser());
   }, [dispatch]);

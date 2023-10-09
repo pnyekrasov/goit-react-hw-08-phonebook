@@ -1,6 +1,6 @@
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 
-import { RegisterForm } from 'components/RegisterForm';
+import { RegisterForm } from 'components/Forms/RegisterForm';
 
 const helmetContext = {};
 

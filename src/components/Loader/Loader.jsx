@@ -1,4 +1,5 @@
 import { Watch } from 'react-loader-spinner';
+
 import { StyledWrapper } from './Loader.styled';
 
 export const Loader = () => {
