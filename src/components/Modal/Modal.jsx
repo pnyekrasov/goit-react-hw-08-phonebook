@@ -1,42 +1,22 @@
-import React, { useState } from 'react';
-import { StyledModal } from './Modal.styled';
+import Modal from 'react-modal';
 
-export const ModalWindow = ({ isOpen, children }) => {
-  const [, setIsOpen] = useState(false);
-  const [opacity, setOpacity] = useState(0);
+import './Modal.css';
 
-  const toggleModal = e => {
-    setOpacity(0);
-    setIsOpen(!isOpen);
-  };
+Modal.setAppElement('#root');
 
-  const afterOpen = () => {
-    setTimeout(() => {
-      setOpacity(1);
-    }, 100);
-  };
-
-  const beforeClose = () => {
-    return new Promise(resolve => {
-      setOpacity(0);
-      setTimeout(resolve, 300);
-    });
-  };
-
+export const ModalWindow = ({ isOpen, isClose, children }) => {
   return (
-    <div>
-      <StyledModal
-        isOpen={isOpen}
-        afterOpen={afterOpen}
-        beforeClose={beforeClose}
-        onBackgroundClick={toggleModal}
-        onEscapeKeydown={toggleModal}
-        opacity={opacity}
-        backgroundProps={{ opacity }}
-      >
-        {children}
-        <button onClick={toggleModal}>Close me</button>
-      </StyledModal>
-    </div>
+    <Modal
+      isOpen={isOpen}
+      onRequestClose={isClose}
+      overlayClassName={'modal-overlay'}
+      className={'modal-content'}
+      closeTimeoutMS={300}
+    >
+      {children}
+      <button type="button" onClick={() => isClose()}>
+        Cancel
+      </button>
+    </Modal>
   );
 };
